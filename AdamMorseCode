@@ -1,0 +1,76 @@
+
+
+int led1 = D6; // LED i attached
+
+int led2 = D7; // LED on board
+
+const int TimeUnit = 300;
+const int DotLength = TimeUnit;
+const int DashLength = TimeUnit * 3;
+const int SymbolSpace = TimeUnit;
+const int LetterSpace = (TimeUnit * 3) - SymbolSpace; //each symbol has a symbol space after, so letter space needs to be shorter (by the length of symbol space)
+const int WordSpace = (TimeUnit * 7) - LetterSpace; ////each letter has a letter space after, so the word space needs to be shorter (by the lenth of the previous letter space)
+
+void setup() {
+
+   
+   
+    pinMode(led1, OUTPUT);
+    pinMode(led2, OUTPUT);
+
+}
+
+
+void dash(){
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    delay(DashLength);
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    delay(SymbolSpace);
+}
+
+void dot(){
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+    delay(DotLength);
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    delay(SymbolSpace); 
+}
+
+void a(){
+    dot();
+    dash();
+    delay(LetterSpace);
+}
+
+void d(){
+    dash();
+    dot();
+    dot();
+    delay(LetterSpace);
+}
+
+void m(){
+    dash();
+    dash();
+    delay(LetterSpace);
+}
+
+void space(){
+    delay(WordSpace);
+}
+
+
+void loop() {
+    
+    
+    a();
+    d();
+    a();
+    m();
+    
+    
+    
+}
